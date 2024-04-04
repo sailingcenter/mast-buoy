@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  weewx:
+    build: ./weewx
+    volumes:
+      - ./state/weewx-archive:/root/weewx-data/archive
+      - ./state/weewx-logs:/root/weewx-data/logs
+      - ./state/weewx-html:/root/weewx-data/public_html
+    ports:
+      - '0.0.0.0:8089:8089'

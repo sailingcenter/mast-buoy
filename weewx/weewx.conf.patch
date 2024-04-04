@@ -1,0 +1,184 @@
+11c11
+< debug = 0
+---
+> debug = 1
+28c28
+<     
+---
+> 
+31c31
+<     
+---
+> 
+36c36
+<     
+---
+> 
+40c40
+<     
+---
+> 
+44c44
+<     
+---
+> 
+49c49
+<     
+---
+> 
+53c53
+<     
+---
+> 
+61c61
+<     
+---
+> 
+64c64
+<     
+---
+> 
+72c72,73
+<     device_type = acurite-bridge
+---
+>     device_type = wu-client
+>     port = 8089
+78c79
+<     
+---
+> 
+81c82
+<     
+---
+> 
+87c88
+<     
+---
+> 
+91c92
+<     
+---
+> 
+100c101
+<     
+---
+> 
+104c105
+<     
+---
+> 
+109c110
+<     
+---
+> 
+112c113
+<         
+---
+> 
+119c120
+<     
+---
+> 
+122c123
+<         
+---
+> 
+130c131
+<     
+---
+> 
+133c134
+<         
+---
+> 
+140c141
+<     
+---
+> 
+143c144
+<         
+---
+> 
+150c151
+<     
+---
+> 
+153c154
+<         
+---
+> 
+161c162
+<         
+---
+> 
+171c172
+<     
+---
+> 
+174c175
+<     
+---
+> 
+177c178
+<     
+---
+> 
+181c182
+<     
+---
+> 
+184c185
+<     
+---
+> 
+190c191
+<     
+---
+> 
+196c197
+<     
+---
+> 
+203c204
+<     
+---
+> 
+210c211
+<     
+---
+> 
+214a216
+> 
+220c222
+<     
+---
+> 
+440c442
+<     archive_interval = 300
+---
+>     archive_interval = 60
+528a531,554
+> 
+> [Logging]
+> 
+>     [[root]]
+>         handlers = console,timed_rotate
+> 
+>     [[handlers]]
+>         [[[console]]]
+>             level = DEBUG
+>             formatter = verbose
+>             class = logging.StreamHandler
+>             stream = ext://sys.stdout
+>         [[[timed_rotate]]]
+>             level = DEBUG
+>             formatter = verbose
+>             class = logging.handlers.TimedRotatingFileHandler
+>             filename = logs/{process_name}.log
+>             when = midnight
+>             backupCount = 7
+> 
+> [News]
+>     [[Welcome]]
+>         header = "Proof of Concept"
+>         body = "Looks like we're up and running..."
