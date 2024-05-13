@@ -1,5 +1,7 @@
 FROM python:3
 
+RUN ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
+
 WORKDIR /usr/src/app
 
 COPY requirements.txt ./
@@ -7,7 +9,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 #COPY .. .
 
-RUN weectl station create --driver weewx.drivers.simulator --location "MAST Buoy" --altitude '579,foot' --latitude '43.036583' --longitude '-87.846067' --register n --units us
+# TODO: The fuzzy-archer skin seems to have a bug w/ unit conversion, it can't properly handle station altitude in feet.
+#RUN weectl station create --driver weewx.drivers.simulator --location "MAST Buoy" --altitude '579,foot' --latitude '43.036583' --longitude '-87.846067' --register n --units us
+RUN weectl station create --driver weewx.drivers.simulator --location "MAST Buoy" --altitude '176,meter' --latitude '43.036583' --longitude '-87.846067' --register n --units us
+
+COPY wview_schema_mast.py /root/weewx-data/bin/user
+COPY mast_obs.py /root/weewx-data/bin/user
 
 RUN cp /root/weewx-data/weewx.conf ./weewx.conf.initial
 

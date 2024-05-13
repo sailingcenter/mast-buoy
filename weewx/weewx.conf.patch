@@ -149,15 +149,107 @@
 > 
 214a216
 > 
-220c222
+220c222,231
 <     
 ---
+>         [[[News]]]
+>             [[[[May 12, 2024]]]]
+>                 header = "MAST Buoy Deployed!"
+>                 body = "The MU team successfully deployed the buoy in rough sea conditions."
+> ;                 img_src = "path/to/big_news.jpg"
+> ;                 img_alt = "Big News!"
+> ;                 img_title = "We have big news!"
 > 
-440c442
+> 
+> 
+299a311
+>                 group_speed = knot
+334a347,350
+>                 currentSpeed = Current Speed
+>                 currentDir = Current Direction
+>                 waveMeanHeight = Wave Mean Height
+>                 waveDir = Wave Direction
+338a355,421
+>         [[[StationInfo]]]
+>             station_info_items = location, sunRiseSet, moonphase, uptime
+>         [[[Navigation]]]
+>             navigation_items = index, stats, history, news
+>         [[[LiveGauges]]]
+>             live_gauge_items = windDir, windSpeed, windGust, outTemp
+>         [[[LiveCharts]]]
+>             live_chart_items = wind, windDir, outTemp, outHumidity, currentSpeed, currentDir, waveMeanHeight, waveDir
+>             [[[[currentSpeed]]]]
+>                 [[[[[currentSpeed]]]]]
+>                     payload_key = currentSpeed
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     decimals = 1
+>             [[[[currentDir]]]]
+>                 [[[[[currentDir]]]]]
+>                     payload_key = currentDir
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     decimals = 1
+>             [[[[waveMeanHeight]]]]
+>                 [[[[[waveMeanHeight]]]]]
+>                     payload_key = waveMeanHeight
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     decimals = 1
+>             [[[[waveDir]]]]
+>                 [[[[[waveDir]]]]]
+>                     payload_key = waveDir
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     decimals = 1
+>         [[[HistoryReport]]]
+>             history_items = min_temp, avg_temp, max_temp, max_wind, NOAA
+>         [[[Stats]]]
+>             stats_items = wind, outTemp #, outHumidity, currentSpeed, currentDir, waveMeanHeight, waveDir
+>             [[[[outHumidity]]]]
+>                 [[[[[avg]]]]]
+>             [[[[currentSpeed]]]]
+>                 [[[[[avg]]]]]
+>             [[[[currentDir]]]]
+>                 [[[[[avg]]]]]
+>             [[[[waveMeanHeight]]]]
+>                 [[[[[avg]]]]]
+>             [[[[waveDir]]]]
+>                 [[[[[avg]]]]]
+>         [[[ImageGenerator]]]
+>             daynight_day_color   = 0xffffff
+>             daynight_night_color = 0xf0f0f0
+>             daynight_edge_color  = 0xf5f5f5
+>             [[[[day_images]]]]
+>                 image_items = daywind-Bootstrap, daywinddir-Bootstrap
+>             [[[[week_images]]]]
+>                 image_items = weekwind-Bootstrap, weekwinddir-Bootstrap
+>             [[[[month_images]]]]
+>                 image_items = monthwind-Bootstrap, monthwinddir-Bootstrap
+>             [[[[year_images]]]]
+>                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
+> 
+440c523
 <     archive_interval = 300
 ---
->     archive_interval = 60
-528a531,554
+>     archive_interval = 120
+474c557
+<         schema = schemas.wview_extended.schema
+---
+>         schema = user.wview_schema_mast.schema
+522c605
+<         prep_services = weewx.engine.StdTimeSynch
+---
+>         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
+528a612,631
 > 
 > [Logging]
 > 
@@ -178,7 +270,3 @@
 >             when = midnight
 >             backupCount = 7
 > 
-> [News]
->     [[Welcome]]
->         header = "Proof of Concept"
->         body = "Looks like we're up and running..."
