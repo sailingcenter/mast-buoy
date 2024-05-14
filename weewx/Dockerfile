@@ -23,7 +23,7 @@ RUN weectl extension install weewx-interceptor.zip --yes
 
 RUN weectl station reconfigure --driver user.interceptor --no-prompt
 
-RUN wget -O fuzzy-archerv4.zip https://github.com/brewster76/fuzzy-archer/archive/refs/heads/master.zip
+RUN wget -O fuzzy-archerv4.zip https://github.com/claudobahn/fuzzy-archer/archive/refs/heads/mast-buoy.zip
 RUN weectl extension install fuzzy-archerv4.zip --yes
 
 RUN cp /root/weewx-data/weewx.conf ./weewx.conf.pre-patch
