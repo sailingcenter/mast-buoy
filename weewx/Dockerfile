@@ -18,7 +18,7 @@ COPY mast_obs.py /root/weewx-data/bin/user
 
 RUN cp /root/weewx-data/weewx.conf ./weewx.conf.initial
 
-RUN wget -O weewx-interceptor.zip https://github.com/matthewwall/weewx-interceptor/archive/master.zip
+RUN wget -O weewx-interceptor.zip https://github.com/claudobahn/weewx-interceptor/archive/mast-buoy.zip
 RUN weectl extension install weewx-interceptor.zip --yes
 
 RUN weectl station reconfigure --driver user.interceptor --no-prompt

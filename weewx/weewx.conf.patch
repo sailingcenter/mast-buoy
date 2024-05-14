@@ -41,7 +41,7 @@
 72c72,73
 <     device_type = acurite-bridge
 ---
->     device_type = wu-client
+>     device_type = mast-buoy
 >     port = 8089
 78c79
 <     
@@ -164,20 +164,67 @@
 > 
 299a311
 >                 group_speed = knot
-334a347,350
+334a347,351
 >                 currentSpeed = Current Speed
 >                 currentDir = Current Direction
->                 waveMeanHeight = Wave Mean Height
+>                 waveMeanHeight = Wave Height
 >                 waveDir = Wave Direction
-338a355,421
+>                 waveDominantPeriod = Wave Period
+337a355,405
+> 
 >         [[[StationInfo]]]
 >             station_info_items = location, sunRiseSet, moonphase, uptime
+> 
 >         [[[Navigation]]]
 >             navigation_items = index, stats, history, news
+> 
 >         [[[LiveGauges]]]
->             live_gauge_items = windDir, windSpeed, windGust, outTemp
+>             live_gauge_items = windDir, windSpeed, currentDir, currentSpeed, waveMeanHeight, waveDominantPeriod
+>             [[[[windDir]]]] #windDir is a special, circular direction gauge, options are limited
+>                 payload_key = windDir
+>                 lineColorN = '#428bca'
+>                 lineColorS = '#b44242'
+>                 decimals = 0
+>             [[[[windSpeed]]]]
+>                 payload_key = windSpeed_mph           # windSpeed_mps if target_unit 'METRICWX', windSpeed_kph if 'METRIC'
+>                 minvalue = 0
+>                 maxvalue = 50
+>                 splitnumber = 10
+>                 lineColor = '#428bca', '#b44242'
+>                 lineColorUntil = 25, maxvalue
+>                 decimals = 0
+>             [[[[currentDir]]]]
+>                 payload_key = currentDir
+>                 lineColorN = '#428bca'
+>                 lineColorS = '#b44242'
+>                 decimals = 0
+>             [[[[currentSpeed]]]]
+>                 payload_key = currentSpeed_mph           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
+>                 minvalue = 0
+>                 maxvalue = 10
+>                 splitnumber = 10
+>                 lineColor = '#428bca', '#b44242'
+>                 lineColorUntil = 3, maxvalue
+>                 decimals = 0
+>             [[[[waveMeanHeight]]]]
+>                 payload_key = waveMeanHeight_ft           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
+>                 minvalue = 0
+>                 maxvalue = 10
+>                 splitnumber = 10
+>                 lineColor = '#428bca', '#b44242'
+>                 lineColorUntil = 3, maxvalue
+>                 decimals = 1
+>             [[[[waveDominantPeriod]]]]
+>                 payload_key = waveDominantPeriod_s           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
+>                 minvalue = 0
+>                 maxvalue = 120
+>                 splitnumber = 12
+>                 lineColor = '#428bca'
+>                 lineColorUntil = 120, maxvalue
+>                 decimals = 0
+338a407,470
 >         [[[LiveCharts]]]
->             live_chart_items = wind, windDir, outTemp, outHumidity, currentSpeed, currentDir, waveMeanHeight, waveDir
+>             live_chart_items = wind, windDir, currentSpeed, currentDir, waveMeanHeight, waveDominantPeriod
 >             [[[[currentSpeed]]]]
 >                 [[[[[currentSpeed]]]]]
 >                     payload_key = currentSpeed
@@ -202,18 +249,20 @@
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
 >                     decimals = 1
->             [[[[waveDir]]]]
->                 [[[[[waveDir]]]]]
->                     payload_key = waveDir
+>             [[[[waveDominantPeriod]]]]
+>                 [[[[[waveDominantPeriod]]]]]
+>                     payload_key = waveDominantPeriod
 >                     showMaxMarkPoint = true
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
 >                     decimals = 1
+> 
 >         [[[HistoryReport]]]
->             history_items = min_temp, avg_temp, max_temp, max_wind, NOAA
+>             history_items = max_wind, NOAA
+> 
 >         [[[Stats]]]
->             stats_items = wind, outTemp #, outHumidity, currentSpeed, currentDir, waveMeanHeight, waveDir
+>             stats_items = wind #, outTemp, outHumidity, currentSpeed, currentDir, waveMeanHeight, waveDir
 >             [[[[outHumidity]]]]
 >                 [[[[[avg]]]]]
 >             [[[[currentSpeed]]]]
@@ -224,6 +273,7 @@
 >                 [[[[[avg]]]]]
 >             [[[[waveDir]]]]
 >                 [[[[[avg]]]]]
+> 
 >         [[[ImageGenerator]]]
 >             daynight_day_color   = 0xffffff
 >             daynight_night_color = 0xf0f0f0
@@ -237,19 +287,19 @@
 >             [[[[year_images]]]]
 >                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
 > 
-440c523
+440c572
 <     archive_interval = 300
 ---
 >     archive_interval = 120
-474c557
+474c606
 <         schema = schemas.wview_extended.schema
 ---
 >         schema = user.wview_schema_mast.schema
-522c605
+522c654
 <         prep_services = weewx.engine.StdTimeSynch
 ---
 >         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
-528a612,631
+528a661,680
 > 
 > [Logging]
 > 
