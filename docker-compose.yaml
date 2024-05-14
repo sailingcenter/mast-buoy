@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   weewx:
+    restart: unless-stopped
     build: ./weewx
     volumes:
       - ./state/weewx-archive:/root/weewx-data/archive
