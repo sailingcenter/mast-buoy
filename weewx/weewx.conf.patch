@@ -164,16 +164,18 @@
 > 
 299a311
 >                 group_speed = knot
-334a347,351
+334a347,353
 >                 currentSpeed = Current Speed
 >                 currentDir = Current Direction
 >                 waveMeanHeight = Wave Height
 >                 waveDir = Wave Direction
 >                 waveDominantPeriod = Wave Period
-337a355,405
+>                 gpsLatitude = Latitude
+>                 gpsLongitude = Longitude
+337a357,407
 > 
 >         [[[StationInfo]]]
->             station_info_items = location, sunRiseSet, moonphase, uptime
+>             station_info_items = sunRiseSet, moonphase, uptime
 > 
 >         [[[Navigation]]]
 >             navigation_items = index, stats, history, news
@@ -222,9 +224,9 @@
 >                 lineColor = '#428bca'
 >                 lineColorUntil = 120, maxvalue
 >                 decimals = 0
-338a407,470
+338a409,488
 >         [[[LiveCharts]]]
->             live_chart_items = wind, windDir, currentSpeed, currentDir, waveMeanHeight, waveDominantPeriod
+>             live_chart_items = wind, windDir, currentSpeed, currentDir, waveMeanHeight, waveDominantPeriod, gpsLatitude, gpsLongitude
 >             [[[[currentSpeed]]]]
 >                 [[[[[currentSpeed]]]]]
 >                     payload_key = currentSpeed
@@ -257,6 +259,22 @@
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
 >                     decimals = 1
+>             [[[[gpsLatitude]]]]
+>                 [[[[[gpsLatitude]]]]]
+>                     payload_key = gpsLatitude
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     decimals = 6
+>             [[[[gpsLongitude]]]]
+>                 [[[[[gpsLongitude]]]]]
+>                     payload_key = gpsLongitude
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     decimals = 6
 > 
 >         [[[HistoryReport]]]
 >             history_items = max_wind, NOAA
@@ -287,19 +305,19 @@
 >             [[[[year_images]]]]
 >                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
 > 
-440c572
+440c590
 <     archive_interval = 300
 ---
 >     archive_interval = 120
-474c606
+474c624
 <         schema = schemas.wview_extended.schema
 ---
 >         schema = user.wview_schema_mast.schema
-522c654
+522c672
 <         prep_services = weewx.engine.StdTimeSynch
 ---
 >         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
-528a661,680
+528a679,698
 > 
 > [Logging]
 > 
