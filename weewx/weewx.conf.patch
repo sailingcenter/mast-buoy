@@ -135,9 +135,11 @@
 <     
 ---
 > 
-196c197
+195,196c196,197
+<         enable = true
 <     
 ---
+>         enable = false
 > 
 203c204
 <     
@@ -156,9 +158,9 @@
 >             [[[[May 12, 2024]]]]
 >                 header = "MAST Buoy Deployed!"
 >                 body = "The MU team successfully deployed the buoy in rough sea conditions."
-> ;                 img_src = "path/to/big_news.jpg"
-> ;                 img_alt = "Big News!"
-> ;                 img_title = "We have big news!"
+> #                 img_src = "path/to/big_news.jpg"
+> #                 img_alt = "Big News!"
+> #                 img_title = "We have big news!"
 > 
 > 
 > 
@@ -172,8 +174,7 @@
 >                 waveDominantPeriod = Wave Period
 >                 gpsLatitude = Latitude
 >                 gpsLongitude = Longitude
-337a357,407
-> 
+338a358,511
 >         [[[StationInfo]]]
 >             station_info_items = location, sunRiseSet, moonphase, uptime
 > 
@@ -224,9 +225,19 @@
 >                 lineColor = '#428bca'
 >                 lineColorUntil = 120, maxvalue
 >                 decimals = 0
-338a409,488
+> 
 >         [[[LiveCharts]]]
->             live_chart_items = wind, windDir, currentSpeed, currentDir, waveMeanHeight, waveDominantPeriod, gpsLatitude, gpsLongitude
+>             live_chart_items = windSpeed, windDir, currentSpeed, currentDir, waveMeanHeight, waveDominantPeriod, gpsLocation
+>             [[[[windSpeed]]]]
+>                 [[[[[windSpeed]]]]]
+>                     payload_key = windSpeed
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     symbol = circle
+>                     symbolSize = 1
+>                     decimals = 1
 >             [[[[currentSpeed]]]]
 >                 [[[[[currentSpeed]]]]]
 >                     payload_key = currentSpeed
@@ -234,6 +245,8 @@
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
+>                     symbol = circle
+>                     symbolSize = 1
 >                     decimals = 1
 >             [[[[currentDir]]]]
 >                 [[[[[currentDir]]]]]
@@ -242,6 +255,8 @@
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
+>                     symbol = circle
+>                     symbolSize = 1
 >                     decimals = 1
 >             [[[[waveMeanHeight]]]]
 >                 [[[[[waveMeanHeight]]]]]
@@ -250,6 +265,8 @@
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
+>                     symbol = circle
+>                     symbolSize = 1
 >                     decimals = 1
 >             [[[[waveDominantPeriod]]]]
 >                 [[[[[waveDominantPeriod]]]]]
@@ -258,6 +275,8 @@
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
+>                     symbol = circle
+>                     symbolSize = 1
 >                     decimals = 1
 >             [[[[gpsLatitude]]]]
 >                 [[[[[gpsLatitude]]]]]
