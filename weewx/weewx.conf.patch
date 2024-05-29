@@ -174,7 +174,8 @@
 >                 waveDominantPeriod = Wave Period
 >                 gpsLatitude = Latitude
 >                 gpsLongitude = Longitude
-338a358,511
+337a357,486
+> 
 >         [[[StationInfo]]]
 >             station_info_items = location, sunRiseSet, moonphase, uptime
 > 
@@ -188,6 +189,7 @@
 >                 lineColorN = '#428bca'
 >                 lineColorS = '#b44242'
 >                 decimals = 0
+>                 stuckNeedleEnabled = false
 >             [[[[windSpeed]]]]
 >                 payload_key = windSpeed_mph           # windSpeed_mps if target_unit 'METRICWX', windSpeed_kph if 'METRIC'
 >                 minvalue = 0
@@ -196,11 +198,13 @@
 >                 lineColor = '#428bca', '#b44242'
 >                 lineColorUntil = 25, maxvalue
 >                 decimals = 0
+>                 stuckNeedleEnabled = false
 >             [[[[currentDir]]]]
 >                 payload_key = currentDir
 >                 lineColorN = '#428bca'
 >                 lineColorS = '#b44242'
 >                 decimals = 0
+>                 stuckNeedleEnabled = false
 >             [[[[currentSpeed]]]]
 >                 payload_key = currentSpeed_mph           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
 >                 minvalue = 0
@@ -209,6 +213,7 @@
 >                 lineColor = '#428bca', '#b44242'
 >                 lineColorUntil = 3, maxvalue
 >                 decimals = 0
+>                 stuckNeedleEnabled = false
 >             [[[[waveMeanHeight]]]]
 >                 payload_key = waveMeanHeight_ft           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
 >                 minvalue = 0
@@ -217,6 +222,7 @@
 >                 lineColor = '#428bca', '#b44242'
 >                 lineColorUntil = 3, maxvalue
 >                 decimals = 1
+>                 stuckNeedleEnabled = false
 >             [[[[waveDominantPeriod]]]]
 >                 payload_key = waveDominantPeriod_s           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
 >                 minvalue = 0
@@ -225,9 +231,10 @@
 >                 lineColor = '#428bca'
 >                 lineColorUntil = 120, maxvalue
 >                 decimals = 0
+>                 stuckNeedleEnabled = false
 > 
 >         [[[LiveCharts]]]
->             live_chart_items = windSpeed, windDir, currentSpeed, currentDir, waveMeanHeight, waveDominantPeriod, gpsLocation
+>             live_chart_items = windSpeed, windDir, currentSpeed, currentDir, waveMeanHeight, waveDominantPeriod, gpsLatitude, gpsLongitude
 >             [[[[windSpeed]]]]
 >                 [[[[[windSpeed]]]]]
 >                     payload_key = windSpeed
@@ -285,7 +292,9 @@
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
->                     decimals = 6
+>                     symbol = circle
+>                     symbolSize = 1
+>                     decimals = 1
 >             [[[[gpsLongitude]]]]
 >                 [[[[[gpsLongitude]]]]]
 >                     payload_key = gpsLongitude
@@ -293,8 +302,10 @@
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
->                     decimals = 6
-> 
+>                     symbol = circle
+>                     symbolSize = 1
+>                     decimals = 1
+338a488,516
 >         [[[HistoryReport]]]
 >             history_items = max_wind, NOAA
 > 
@@ -324,19 +335,19 @@
 >             [[[[year_images]]]]
 >                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
 > 
-440c590
+440c618
 <     archive_interval = 300
 ---
 >     archive_interval = 120
-474c624
+474c652
 <         schema = schemas.wview_extended.schema
 ---
 >         schema = user.wview_schema_mast.schema
-522c672
+522c700
 <         prep_services = weewx.engine.StdTimeSynch
 ---
 >         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
-528a679,698
+528a707,726
 > 
 > [Logging]
 > 
