@@ -166,21 +166,26 @@
 > 
 299a311
 >                 group_speed = knot
-334a347,353
+334a347,355
 >                 currentSpeed = Current Speed
 >                 currentDir = Current Direction
+>                 gpsLatitude = Latitude
+>                 gpsLongitude = Longitude
+>                 rxSNR = rx SNR
+>                 rxRSSI = rx RSSI
 >                 waveMeanHeight = Wave Height
 >                 waveDir = Wave Direction
 >                 waveDominantPeriod = Wave Period
->                 gpsLatitude = Latitude
->                 gpsLongitude = Longitude
-337a357,486
+337a359,517
 > 
 >         [[[StationInfo]]]
 >             station_info_items = location, sunRiseSet, moonphase, uptime
 > 
 >         [[[Navigation]]]
 >             navigation_items = index, stats, history, news
+> 
+>         [[[JSONGenerator]]]
+>             timespan = 6
 > 
 >         [[[LiveGauges]]]
 >             live_gauge_items = windDir, windSpeed, currentDir, currentSpeed, waveMeanHeight, waveDominantPeriod
@@ -191,7 +196,7 @@
 >                 decimals = 0
 >                 stuckNeedleEnabled = false
 >             [[[[windSpeed]]]]
->                 payload_key = windSpeed_mph           # windSpeed_mps if target_unit 'METRICWX', windSpeed_kph if 'METRIC'
+>                 payload_key = windSpeed_knot           # windSpeed_mps if target_unit 'METRICWX', windSpeed_kph if 'METRIC'
 >                 minvalue = 0
 >                 maxvalue = 50
 >                 splitnumber = 10
@@ -206,7 +211,7 @@
 >                 decimals = 0
 >                 stuckNeedleEnabled = false
 >             [[[[currentSpeed]]]]
->                 payload_key = currentSpeed_mph           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
+>                 payload_key = currentSpeed_knot           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
 >                 minvalue = 0
 >                 maxvalue = 10
 >                 splitnumber = 10
@@ -234,7 +239,7 @@
 >                 stuckNeedleEnabled = false
 > 
 >         [[[LiveCharts]]]
->             live_chart_items = windSpeed, windDir, currentSpeed, currentDir, waveMeanHeight, waveDominantPeriod, gpsLatitude, gpsLongitude
+>             live_chart_items = windSpeed, windDir, currentSpeed, currentDir, waveMeanHeight, waveDominantPeriod, gpsLatitude, gpsLongitude, rx
 >             [[[[windSpeed]]]]
 >                 [[[[[windSpeed]]]]]
 >                     payload_key = windSpeed
@@ -242,6 +247,7 @@
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
+>                     lineWidth = 0
 >                     symbol = circle
 >                     symbolSize = 1
 >                     decimals = 1
@@ -252,16 +258,18 @@
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
+>                     lineWidth = 0
 >                     symbol = circle
 >                     symbolSize = 1
 >                     decimals = 1
 >             [[[[currentDir]]]]
 >                 [[[[[currentDir]]]]]
 >                     payload_key = currentDir
->                     showMaxMarkPoint = true
->                     showMinMarkPoint = true
+>                     showMaxMarkPoint = false
+>                     showMinMarkPoint = false
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
+>                     lineWidth = 0
 >                     symbol = circle
 >                     symbolSize = 1
 >                     decimals = 1
@@ -272,6 +280,7 @@
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
+>                     lineWidth = 0
 >                     symbol = circle
 >                     symbolSize = 1
 >                     decimals = 1
@@ -282,6 +291,7 @@
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
+>                     lineWidth = 0
 >                     symbol = circle
 >                     symbolSize = 1
 >                     decimals = 1
@@ -292,9 +302,10 @@
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
+>                     lineWidth = 0
 >                     symbol = circle
 >                     symbolSize = 1
->                     decimals = 1
+>                     decimals = 4
 >             [[[[gpsLongitude]]]]
 >                 [[[[[gpsLongitude]]]]]
 >                     payload_key = gpsLongitude
@@ -302,10 +313,30 @@
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
 >                     lineColor = '#428bca'
+>                     lineWidth = 0
 >                     symbol = circle
 >                     symbolSize = 1
->                     decimals = 1
-338a488,516
+>                     decimals = 4
+>             [[[[rx]]]]
+>                 [[[[[rxSNR]]]]]
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#b44242'
+>                     lineWidth = 0
+>                     symbol = circle
+>                     symbolSize = 1
+>                     decimals = 0
+>                 [[[[[rxRSSI]]]]]
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     lineWidth = 0
+>                     symbol = circle
+>                     symbolSize = 1
+>                     decimals = 0
+338a519,576
 >         [[[HistoryReport]]]
 >             history_items = max_wind, NOAA
 > 
@@ -326,8 +357,37 @@
 >             daynight_day_color   = 0xffffff
 >             daynight_night_color = 0xf0f0f0
 >             daynight_edge_color  = 0xf5f5f5
+> 
 >             [[[[day_images]]]]
->                 image_items = daywind-Bootstrap, daywinddir-Bootstrap
+>                 image_items = daywind-Bootstrap, daywinddir-Bootstrap, dayCurrentSpeed-Bootstrap, dayCurrentDir-Bootstrap, dayWaveHeight-Bootstrap, dayWavePeriod-Bootstrap
+>                 [[[[[daywind-Bootstrap]]]]]
+>                     line_type = 'none'
+>                     marker_size = 6
+>                     marker_type = 'cross'
+>                     [[[[[[windSpeed]]]]]]
+>                 [[[[[dayCurrentSpeed-Bootstrap]]]]]
+>                     line_type = 'none'
+>                     marker_size = 6
+>                     marker_type = 'cross'
+>                     [[[[[[currentSpeed]]]]]]
+>                 [[[[[dayCurrentDir-Bootstrap]]]]]
+>                     yscale = 0.0, 360.0, 45.0
+>                     line_type = 'none'
+>                     marker_size = 6
+>                     marker_type = 'cross'
+>                     [[[[[[currentDir]]]]]]
+>                 [[[[[dayWaveHeight-Bootstrap]]]]]
+>                     line_type = 'none'
+>                     marker_size = 6
+>                     marker_type = 'cross'
+>                     [[[[[[waveMeanHeight]]]]]]
+>                 [[[[[dayWavePeriod-Bootstrap]]]]]
+>                     yscale = 0.0, 360.0, 45.0
+>                     line_type = 'none'
+>                     marker_size = 6
+>                     marker_type = 'cross'
+>                     [[[[[[waveDominantPeriod]]]]]]
+> 
 >             [[[[week_images]]]]
 >                 image_items = weekwind-Bootstrap, weekwinddir-Bootstrap
 >             [[[[month_images]]]]
@@ -335,19 +395,19 @@
 >             [[[[year_images]]]]
 >                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
 > 
-440c618
+440c678
 <     archive_interval = 300
 ---
 >     archive_interval = 120
-474c652
+474c712
 <         schema = schemas.wview_extended.schema
 ---
 >         schema = user.wview_schema_mast.schema
-522c700
+522c760
 <         prep_services = weewx.engine.StdTimeSynch
 ---
 >         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
-528a707,726
+528a767,786
 > 
 > [Logging]
 > 

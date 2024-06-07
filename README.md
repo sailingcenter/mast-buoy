@@ -9,7 +9,7 @@ docker compose up
 ```
 
 ## Sample request
-* http://localhost:8089/weatherstation/updateweatherstation.php?windSpeedKph=22.629213&windDirectionDegrees=301&waveHeightFt=0.341356&wavePeriodSeconds=54.090321&gpsLong=-87.846039&gpsLat=43.040272&waterSpeedKn=0.017173&waterDirection=301.558167
+* http://localhost:8089/weatherstation/updateweatherstation.php?windSpeedKph=22.629213&windDirectionDegrees=301&waveHeightFt=0.341356&wavePeriodSeconds=54.090321&gpsLong=-87.846039&gpsLat=43.040272&waterSpeedKn=0.017173&waterDirection=301.558167&rxSNR=-5&rxRSSI=-90
 
 ## Connecting to weewx container
 * Using shell
