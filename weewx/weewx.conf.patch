@@ -398,7 +398,7 @@
 440c678
 <     archive_interval = 300
 ---
->     archive_interval = 120
+>     archive_interval = 60
 474c712
 <         schema = schemas.wview_extended.schema
 ---
