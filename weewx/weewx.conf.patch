@@ -176,7 +176,8 @@
 >                 waveMeanHeight = Wave Height
 >                 waveDir = Wave Direction
 >                 waveDominantPeriod = Wave Period
-338a360,605
+337a359,517
+> 
 >         [[[StationInfo]]]
 >             station_info_items = location, sunRiseSet, moonphase, uptime
 > 
@@ -335,7 +336,7 @@
 >                     symbol = circle
 >                     symbolSize = 1
 >                     decimals = 0
-> 
+338a519,610
 >         [[[HistoryReport]]]
 >             history_items = max_wind, NOAA
 > 
@@ -358,7 +359,7 @@
 >             daynight_edge_color  = 0xf5f5f5
 > 
 >             [[[[day_images]]]]
->                 image_items = dayWind-Bootstrap, dayWindDir-Bootstrap, dayCurrentSpeed-Bootstrap, dayCurrentDir-Bootstrap, dayWaveHeight-Bootstrap, dayWavePeriod-Bootstrap, dayGpsLatitude-Bootstrap, dayGpsLongitude-Bootstrap, daySignal-Bootstrap
+>                 image_items = dayWind-Bootstrap, dayWindDir-Bootstrap, dayCurrentSpeed-Bootstrap, dayCurrentDir-Bootstrap, dayWaveHeight-Bootstrap, dayWavePeriod-Bootstrap, dayGpsLatitude-Bootstrap, dayGpsLongitude-Bootstrap, daySNR-Bootstrap, dayRSSI-Bootstrap
 >                 line_type = 'none'
 >                 marker_size = 3
 >                 marker_type = 'cross'
@@ -381,13 +382,15 @@
 >                     [[[[[[gpsLatitude]]]]]]
 >                 [[[[[dayGpsLongitude-Bootstrap]]]]]
 >                     [[[[[[gpsLongitude]]]]]]
->                 [[[[[daySignal-Bootstrap]]]]]
+>                 [[[[[daySNR-Bootstrap]]]]]
 >                     yscale = None, None, 3.0
 >                     [[[[[[rxSNR]]]]]]
+>                 [[[[[dayRSSI-Bootstrap]]]]]
+>                     yscale = None, None, 3.0
 >                     [[[[[[rxRSSI]]]]]]
 > 
 >             [[[[week_images]]]]
->                 image_items = weekWind-Bootstrap, weekWindDir-Bootstrap, weekCurrentSpeed-Bootstrap, weekCurrentDir-Bootstrap, weekWaveHeight-Bootstrap, weekWavePeriod-Bootstrap, weekGpsLatitude-Bootstrap, weekGpsLongitude-Bootstrap, weekSignal-Bootstrap
+>                 image_items = weekWind-Bootstrap, weekWindDir-Bootstrap, weekCurrentSpeed-Bootstrap, weekCurrentDir-Bootstrap, weekWaveHeight-Bootstrap, weekWavePeriod-Bootstrap, weekGpsLatitude-Bootstrap, weekGpsLongitude-Bootstrap, weekSNR-Bootstrap, weekRSSI-Bootstrap
 >                 line_type = 'none'
 >                 marker_size = 3
 >                 marker_type = 'cross'
@@ -412,10 +415,13 @@
 >                     [[[[[[gpsLatitude]]]]]]
 >                 [[[[[weekGpsLongitude-Bootstrap]]]]]
 >                     [[[[[[gpsLongitude]]]]]]
->                 [[[[[weekSignal-Bootstrap]]]]]
+>                 [[[[[weekSNR-Bootstrap]]]]]
 >                     yscale = None, None, 3.0
 >                     aggregate_type = none
 >                     [[[[[[rxSNR]]]]]]
+>                 [[[[[weekRSSI-Bootstrap]]]]]
+>                     yscale = None, None, 3.0
+>                     aggregate_type = none
 >                     [[[[[[rxRSSI]]]]]]
 > 
 >             [[[[month_images]]]]
@@ -423,19 +429,19 @@
 >             [[[[year_images]]]]
 >                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
 > 
-440c707
+440c712
 <     archive_interval = 300
 ---
 >     archive_interval = 60
-474c741
+474c746
 <         schema = schemas.wview_extended.schema
 ---
 >         schema = user.wview_schema_mast.schema
-522c789
+522c794
 <         prep_services = weewx.engine.StdTimeSynch
 ---
 >         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
-528a796,815
+528a801,820
 > 
 > [Logging]
 > 
