@@ -176,7 +176,7 @@
 >                 waveMeanHeight = Wave Height
 >                 waveDir = Wave Direction
 >                 waveDominantPeriod = Wave Period
-337a359,517
+337a359,574
 > 
 >         [[[StationInfo]]]
 >             station_info_items = location, sunRiseSet, moonphase, uptime
@@ -336,7 +336,7 @@
 >                     symbol = circle
 >                     symbolSize = 1
 >                     decimals = 0
-338a519,614
+> 
 >         [[[HistoryReport]]]
 >             history_items = max_wind, NOAA
 > 
@@ -364,16 +364,19 @@
 >                 marker_size = 3
 >                 marker_type = 'cross'
 >                 [[[[[dayWind-Bootstrap]]]]]
+>                     yscale = 0.0, 10.0, 1.0
 >                     [[[[[[windSpeed]]]]]]
 >                 [[[[[dayWindDir-Bootstrap]]]]]
 >                     yscale = 0.0, 360.0, 45.0
 >                     [[[[[[windDir]]]]]]
 >                 [[[[[dayCurrentSpeed-Bootstrap]]]]]
+>                     yscale = 0.0, None, 0.1
 >                     [[[[[[currentSpeed]]]]]]
 >                 [[[[[dayCurrentDir-Bootstrap]]]]]
 >                     yscale = 0.0, 360.0, 45.0
 >                     [[[[[[currentDir]]]]]]
 >                 [[[[[dayWaveHeight-Bootstrap]]]]]
+>                     yscale = 0.0, None, 0.1
 >                     [[[[[[waveMeanHeight]]]]]]
 >                 [[[[[dayWavePeriod-Bootstrap]]]]]
 >                     yscale = 0.0, 360.0, 45.0
@@ -390,13 +393,14 @@
 >                 [[[[[dayRSSI-Bootstrap]]]]]
 >                     yscale = None, None, 3.0
 >                     [[[[[[rxRSSI]]]]]]
-> 
+338a576,620
 >             [[[[week_images]]]]
 >                 image_items = weekWind-Bootstrap, weekWindDir-Bootstrap, weekCurrentSpeed-Bootstrap, weekCurrentDir-Bootstrap, weekWaveHeight-Bootstrap, weekWavePeriod-Bootstrap, weekGpsLatitude-Bootstrap, weekGpsLongitude-Bootstrap, weekSNR-Bootstrap, weekRSSI-Bootstrap
 >                 line_type = 'none'
 >                 marker_size = 3
 >                 marker_type = 'cross'
 >                 [[[[[weekWind-Bootstrap]]]]]
+>                     yscale = 0.0, 10.0, 1.0
 >                     [[[[[[windSpeed]]]]]]
 >                     [[[[[[windGust]]]]]]
 >                         aggregate_type = max
@@ -404,11 +408,13 @@
 >                     yscale = 0.0, 360.0, 45.0
 >                     [[[[[[windDir]]]]]]
 >                 [[[[[weekCurrentSpeed-Bootstrap]]]]]
+>                     yscale = 0.0, None, 0.1
 >                     [[[[[[currentSpeed]]]]]]
 >                 [[[[[weekCurrentDir-Bootstrap]]]]]
 >                     yscale = 0.0, 360.0, 45.0
 >                     [[[[[[currentDir]]]]]]
 >                 [[[[[weekWaveHeight-Bootstrap]]]]]
+>                     yscale = 0.0, None, 0.1
 >                     [[[[[[waveMeanHeight]]]]]]
 >                 [[[[[weekWavePeriod-Bootstrap]]]]]
 >                     yscale = 0.0, 360.0, 45.0
@@ -433,19 +439,19 @@
 >             [[[[year_images]]]]
 >                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
 > 
-440c716
+440c722
 <     archive_interval = 300
 ---
 >     archive_interval = 60
-474c750
+474c756
 <         schema = schemas.wview_extended.schema
 ---
 >         schema = user.wview_schema_mast.schema
-522c798
+522c804
 <         prep_services = weewx.engine.StdTimeSynch
 ---
 >         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
-528a805,824
+528a811,830
 > 
 > [Logging]
 > 
