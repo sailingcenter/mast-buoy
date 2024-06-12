@@ -176,8 +176,7 @@
 >                 waveMeanHeight = Wave Height
 >                 waveDir = Wave Direction
 >                 waveDominantPeriod = Wave Period
-337a359,574
-> 
+338a360,623
 >         [[[StationInfo]]]
 >             station_info_items = location, sunRiseSet, moonphase, uptime
 > 
@@ -249,8 +248,11 @@
 >                     lineColor = '#428bca'
 >                     lineWidth = 0
 >                     symbol = circle
->                     symbolSize = 1
+>                     symbolSize = 3
 >                     decimals = 1
+>             [[[[windDir]]]]
+>                 [[[[[windDir]]]]]
+>                     symbolSize = 3
 >             [[[[currentSpeed]]]]
 >                 [[[[[currentSpeed]]]]]
 >                     payload_key = currentSpeed
@@ -260,7 +262,7 @@
 >                     lineColor = '#428bca'
 >                     lineWidth = 0
 >                     symbol = circle
->                     symbolSize = 1
+>                     symbolSize = 3
 >                     decimals = 1
 >             [[[[currentDir]]]]
 >                 [[[[[currentDir]]]]]
@@ -271,7 +273,7 @@
 >                     lineColor = '#428bca'
 >                     lineWidth = 0
 >                     symbol = circle
->                     symbolSize = 1
+>                     symbolSize = 3
 >                     decimals = 1
 >             [[[[waveMeanHeight]]]]
 >                 [[[[[waveMeanHeight]]]]]
@@ -282,7 +284,7 @@
 >                     lineColor = '#428bca'
 >                     lineWidth = 0
 >                     symbol = circle
->                     symbolSize = 1
+>                     symbolSize = 3
 >                     decimals = 1
 >             [[[[waveDominantPeriod]]]]
 >                 [[[[[waveDominantPeriod]]]]]
@@ -293,7 +295,7 @@
 >                     lineColor = '#428bca'
 >                     lineWidth = 0
 >                     symbol = circle
->                     symbolSize = 1
+>                     symbolSize = 3
 >                     decimals = 1
 >             [[[[gpsLatitude]]]]
 >                 [[[[[gpsLatitude]]]]]
@@ -304,7 +306,7 @@
 >                     lineColor = '#428bca'
 >                     lineWidth = 0
 >                     symbol = circle
->                     symbolSize = 1
+>                     symbolSize = 3
 >                     decimals = 4
 >             [[[[gpsLongitude]]]]
 >                 [[[[[gpsLongitude]]]]]
@@ -315,7 +317,7 @@
 >                     lineColor = '#428bca'
 >                     lineWidth = 0
 >                     symbol = circle
->                     symbolSize = 1
+>                     symbolSize = 3
 >                     decimals = 4
 >             [[[[rx]]]]
 >                 [[[[[rxSNR]]]]]
@@ -325,7 +327,7 @@
 >                     lineColor = '#428bca'
 >                     lineWidth = 0
 >                     symbol = circle
->                     symbolSize = 1
+>                     symbolSize = 3
 >                     decimals = 0
 >                 [[[[[rxRSSI]]]]]
 >                     showMaxMarkPoint = true
@@ -334,7 +336,7 @@
 >                     lineColor = '#b44242'
 >                     lineWidth = 0
 >                     symbol = circle
->                     symbolSize = 1
+>                     symbolSize = 3
 >                     decimals = 0
 > 
 >         [[[HistoryReport]]]
@@ -393,7 +395,7 @@
 >                 [[[[[dayRSSI-Bootstrap]]]]]
 >                     yscale = None, None, 3.0
 >                     [[[[[[rxRSSI]]]]]]
-338a576,620
+> 
 >             [[[[week_images]]]]
 >                 image_items = weekWind-Bootstrap, weekWindDir-Bootstrap, weekCurrentSpeed-Bootstrap, weekCurrentDir-Bootstrap, weekWaveHeight-Bootstrap, weekWavePeriod-Bootstrap, weekGpsLatitude-Bootstrap, weekGpsLongitude-Bootstrap, weekSNR-Bootstrap, weekRSSI-Bootstrap
 >                 line_type = 'none'
@@ -439,19 +441,19 @@
 >             [[[[year_images]]]]
 >                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
 > 
-440c722
+440c725
 <     archive_interval = 300
 ---
 >     archive_interval = 60
-474c756
+474c759
 <         schema = schemas.wview_extended.schema
 ---
 >         schema = user.wview_schema_mast.schema
-522c804
+522c807
 <         prep_services = weewx.engine.StdTimeSynch
 ---
 >         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
-528a811,830
+528a814,833
 > 
 > [Logging]
 > 
