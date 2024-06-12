@@ -336,7 +336,7 @@
 >                     symbol = circle
 >                     symbolSize = 1
 >                     decimals = 0
-338a519,610
+338a519,614
 >         [[[HistoryReport]]]
 >             history_items = max_wind, NOAA
 > 
@@ -379,8 +379,10 @@
 >                     yscale = 0.0, 360.0, 45.0
 >                     [[[[[[waveDominantPeriod]]]]]]
 >                 [[[[[dayGpsLatitude-Bootstrap]]]]]
+>                     yscale = None, None, 0.001
 >                     [[[[[[gpsLatitude]]]]]]
 >                 [[[[[dayGpsLongitude-Bootstrap]]]]]
+>                     yscale = None, None, 0.001
 >                     [[[[[[gpsLongitude]]]]]]
 >                 [[[[[daySNR-Bootstrap]]]]]
 >                     yscale = None, None, 3.0
@@ -412,8 +414,10 @@
 >                     yscale = 0.0, 360.0, 45.0
 >                     [[[[[[waveDominantPeriod]]]]]]
 >                 [[[[[weekGpsLatitude-Bootstrap]]]]]
+>                     yscale = None, None, 0.001
 >                     [[[[[[gpsLatitude]]]]]]
 >                 [[[[[weekGpsLongitude-Bootstrap]]]]]
+>                     yscale = None, None, 0.001
 >                     [[[[[[gpsLongitude]]]]]]
 >                 [[[[[weekSNR-Bootstrap]]]]]
 >                     yscale = None, None, 3.0
@@ -429,19 +433,19 @@
 >             [[[[year_images]]]]
 >                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
 > 
-440c712
+440c716
 <     archive_interval = 300
 ---
 >     archive_interval = 60
-474c746
+474c750
 <         schema = schemas.wview_extended.schema
 ---
 >         schema = user.wview_schema_mast.schema
-522c794
+522c798
 <         prep_services = weewx.engine.StdTimeSynch
 ---
 >         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
-528a801,820
+528a805,824
 > 
 > [Logging]
 > 
