@@ -2,171 +2,174 @@
 < debug = 0
 ---
 > debug = 1
-28c28
+27c27
 <     
 ---
 > 
-31c31
+30c30
 <     
 ---
 > 
-36c36
+35c35
 <     
 ---
 > 
-40c40
+39c39
 <     
 ---
 > 
-44c44
+43c43
 <     
 ---
 > 
-49c49
+48c48
 <     
 ---
 > 
-53c53
+52c52
 <     
 ---
 > 
-61c61
+60c60
 <     
 ---
 > 
-64c64
+63c63
 <     
 ---
 > 
-72c72,73
+71c71,72
 <     device_type = acurite-bridge
 ---
 >     device_type = mast-buoy
 >     port = 8089
-78c79
+77c78
 <     
 ---
 > 
-81c82
+80c81
 <     
 ---
 > 
-87c88
+86c87
 <     
 ---
 > 
-91c92
+90c91
 <     
 ---
 > 
-100c101
+99c100
 <     
 ---
 > 
-104c105
+103c104
 <     
 ---
 > 
-109c110
+108c109
 <     
 ---
 > 
-112c113
+111c112
 <         
 ---
 > 
-119c120
+118c119
 <     
 ---
 > 
-122c123
+121c122
 <         
 ---
 > 
-130c131
+129c130
 <     
 ---
 > 
-133c134
+132c133
 <         
 ---
 > 
-140c141
+139c140
 <     
 ---
 > 
-143c144
+142c143
 <         
 ---
 > 
-150c151
+149c150
 <     
 ---
 > 
-153c154
+152c153
 <         
 ---
 > 
-161c162
+160c161
 <         
 ---
 > 
-171c172
+170c171
 <     
 ---
 > 
-174c175
+173c174
 <     
 ---
 > 
-177c178
+176c177
 <     
 ---
 > 
-181c182
+180c181
 <     
 ---
 > 
-184c185
+183c184
 <     
 ---
 > 
-190c191
+189c190
 <     
 ---
 > 
-195,196c196,197
+194,195c195,196
 <         enable = true
 <     
 ---
 >         enable = false
 > 
-203c204
+202c203
 <     
 ---
 > 
-210c211
+209c210
 <     
 ---
 > 
-214a216
+213a215
 > 
-220c222,231
+219c221,233
 <     
 ---
 >         [[[News]]]
+>             [[[[June 21, 2024]]]]
+>                 header = "Antenna Upgrade"
+>                 body = "The receiver antenna at the sailing center was replaced with a higher gain antenna to improve signal reception."
 >             [[[[May 12, 2024]]]]
 >                 header = "MAST Buoy Deployed!"
->                 body = "The MU team successfully deployed the buoy in rough sea conditions."
+>                 body = "The Marquette University team successfully deployed the buoy in rough sea conditions."
 > #                 img_src = "path/to/big_news.jpg"
 > #                 img_alt = "Big News!"
 > #                 img_title = "We have big news!"
 > 
 > 
 > 
-299a311
+298a313
 >                 group_speed = knot
-334a347,355
+333a349,357
 >                 currentSpeed = Current Speed
 >                 currentDir = Current Direction
 >                 gpsLatitude = Latitude
@@ -176,7 +179,8 @@
 >                 waveMeanHeight = Wave Height
 >                 waveDir = Wave Direction
 >                 waveDominantPeriod = Wave Period
-338a360,623
+336a361,522
+> 
 >         [[[StationInfo]]]
 >             station_info_items = location, sunRiseSet, moonphase, uptime
 > 
@@ -338,7 +342,7 @@
 >                     symbol = circle
 >                     symbolSize = 3
 >                     decimals = 0
-> 
+337a524,625
 >         [[[HistoryReport]]]
 >             history_items = max_wind, NOAA
 > 
@@ -441,19 +445,19 @@
 >             [[[[year_images]]]]
 >                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
 > 
-440c725
+439c727
 <     archive_interval = 300
 ---
 >     archive_interval = 60
-474c759
+473c761
 <         schema = schemas.wview_extended.schema
 ---
 >         schema = user.wview_schema_mast.schema
-522c807
+521c809
 <         prep_services = weewx.engine.StdTimeSynch
 ---
 >         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
-528a814,833
+527a816,835
 > 
 > [Logging]
 > 
