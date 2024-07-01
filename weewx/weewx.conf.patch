@@ -179,8 +179,7 @@
 >                 waveMeanHeight = Wave Height
 >                 waveDir = Wave Direction
 >                 waveDominantPeriod = Wave Period
-336a361,522
-> 
+337a362,626
 >         [[[StationInfo]]]
 >             station_info_items = location, sunRiseSet, moonphase, uptime
 > 
@@ -342,7 +341,7 @@
 >                     symbol = circle
 >                     symbolSize = 3
 >                     decimals = 0
-337a524,625
+> 
 >         [[[HistoryReport]]]
 >             history_items = max_wind, NOAA
 > 
@@ -370,7 +369,7 @@
 >                 marker_size = 3
 >                 marker_type = 'cross'
 >                 [[[[[dayWind-Bootstrap]]]]]
->                     yscale = 0.0, 10.0, 1.0
+>                     yscale = 0.0, None, 1.0
 >                     [[[[[[windSpeed]]]]]]
 >                 [[[[[dayWindDir-Bootstrap]]]]]
 >                     yscale = 0.0, 360.0, 45.0
@@ -405,8 +404,9 @@
 >                 line_type = 'none'
 >                 marker_size = 3
 >                 marker_type = 'cross'
+>                 aggregate_interval = 600
 >                 [[[[[weekWind-Bootstrap]]]]]
->                     yscale = 0.0, 10.0, 1.0
+>                     yscale = 0.0, None, 1.0
 >                     [[[[[[windSpeed]]]]]]
 >                     [[[[[[windGust]]]]]]
 >                         aggregate_type = max
@@ -445,19 +445,19 @@
 >             [[[[year_images]]]]
 >                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
 > 
-439c727
+439c728
 <     archive_interval = 300
 ---
 >     archive_interval = 60
-473c761
+473c762
 <         schema = schemas.wview_extended.schema
 ---
 >         schema = user.wview_schema_mast.schema
-521c809
+521c810
 <         prep_services = weewx.engine.StdTimeSynch
 ---
 >         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
-527a816,835
+527a817,836
 > 
 > [Logging]
 > 
