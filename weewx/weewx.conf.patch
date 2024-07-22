@@ -219,7 +219,7 @@
 >                 splitnumber = 10
 >                 lineColor = '#428bca', '#b44242'
 >                 lineColorUntil = 3, maxvalue
->                 decimals = 0
+>                 decimals = 2
 >                 stuckNeedleEnabled = false
 >             [[[[waveMeanHeight]]]]
 >                 payload_key = waveMeanHeight_ft           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
@@ -266,7 +266,7 @@
 >                     lineWidth = 0
 >                     symbol = circle
 >                     symbolSize = 3
->                     decimals = 1
+>                     decimals = 2
 >             [[[[currentDir]]]]
 >                 [[[[[currentDir]]]]]
 >                     payload_key = currentDir
@@ -277,7 +277,7 @@
 >                     lineWidth = 0
 >                     symbol = circle
 >                     symbolSize = 3
->                     decimals = 1
+>                     decimals = 0
 >             [[[[waveMeanHeight]]]]
 >                 [[[[[waveMeanHeight]]]]]
 >                     payload_key = waveMeanHeight
@@ -299,7 +299,7 @@
 >                     lineWidth = 0
 >                     symbol = circle
 >                     symbolSize = 3
->                     decimals = 1
+>                     decimals = 0
 >             [[[[gpsLatitude]]]]
 >                 [[[[[gpsLatitude]]]]]
 >                     payload_key = gpsLatitude
