@@ -1,0 +1,5 @@
+RemoteWeatherBuoy ---> buoyLoRaTransmit, ESP32AnemometerWithCorrectedDirection, BJT_Switch, currentSpeedWorking, GPS_Working, wavePeriodAndHeight
+
+GroundStation ---> buoyLoRaReceive, buoyLoRaTransmit, esp32Relay
+
+WebServer ---> buoyLoRaReceive, esp32withWiFi
