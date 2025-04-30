@@ -1,1 +1,3 @@
-weewx==5.0.2
+weewx==5.1.0
+# Optional, can be used by fuzzy-archer jsonengine
+# tzlocal==5.3.1
