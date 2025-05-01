@@ -1,0 +1,10 @@
+1c1
+< <nav class="navbar sticky-top navbar-expand bg-dark" data-bs-theme="dark">
+---
+> <nav class="navbar sticky-top navbar-expand bg-body" data-bs-theme="light">
+74c74,76
+<             <div class="navbar-text d-none d-lg-inline${msAuto}">$gettext("Last update") <span id="lastUpdate">$current.dateTime</span></div>
+---
+>             <a class="ms-auto navbar-brand d-none d-sm-block" href="https://sailingcenter.org">
+>                 <img height=30 src="./images/mcsc_2023_logo_629x104.png">
+>             </a>

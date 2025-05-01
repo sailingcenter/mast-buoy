@@ -1,0 +1,5 @@
+4c4,5
+<             <h1 class="currentConditions">$gettext("Current Conditions")</h1>
+---
+>             <h1 class="currentConditions mb-0 py-0">$gettext("Current Conditions")</h1>
+>             <div class="text-center" id="lastUpdate">$current.dateTime</div>

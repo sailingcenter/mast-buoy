@@ -1,0 +1,28 @@
+#errorCatcher Echo
+<!DOCTYPE html>
+<html lang="$lang">
+#include "head.html.inc"
+<body>
+<!-- Menu navbar -->
+#include "nav.html.inc"
+<!-- Main container -->
+<div class="$global_main_container_classes">
+    <div class="row">
+        <!-- Gauge panel -->
+        #include "livegauges.html.inc"
+        <!-- Main panel -->
+        <div id="${global_main_panel_id}" class="${global_main_panel_classes}">
+            <!-- About content goes here-->
+
+            <h2>History</h2>
+            <p>The MAST weather buoy is a collaboration between Marquette University and the Milwaukee Community
+               Sailing Center, sponsored by MAST.
+            </p>
+
+        </div>
+    </div>
+    #include "foot.html.inc"
+</div>
+#include "script.html.inc"
+</body>
+</html>
