@@ -184,7 +184,7 @@
 >             station_info_items = location, sunRiseSet, moonphase, uptime
 > 
 >         [[[Navigation]]]
->             navigation_items = index, stats, history, news
+>             navigation_items = index, stats, history, news, about
 > 
 >         [[[JSONGenerator]]]
 >             timespan = 6

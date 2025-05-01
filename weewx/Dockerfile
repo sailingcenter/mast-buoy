@@ -31,4 +31,16 @@ RUN cp /root/weewx-data/weewx.conf ./weewx.conf.pre-patch
 COPY weewx.conf.patch ./
 RUN patch /root/weewx-data/weewx.conf weewx.conf.patch
 
+COPY images /root/weewx-data/skins/Bootstrap/images
+COPY about.html.tmpl /root/weewx-data/skins/Bootstrap/about.html.tmpl
+
+COPY nav.html.inc.patch ./
+RUN patch /root/weewx-data/skins/Bootstrap/nav.html.inc nav.html.inc.patch
+
+COPY livegauges.html.inc.patch ./
+RUN patch /root/weewx-data/skins/Bootstrap/livegauges.html.inc livegauges.html.inc.patch
+
+COPY foot.html.inc.patch ./
+RUN patch /root/weewx-data/skins/Bootstrap/foot.html.inc foot.html.inc.patch
+
 CMD weewxd
