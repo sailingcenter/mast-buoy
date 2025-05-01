@@ -179,7 +179,11 @@
 >                 waveMeanHeight = Wave Height
 >                 waveDir = Wave Direction
 >                 waveDominantPeriod = Wave Period
-337a362,626
+336a361,525
+> 
+>         [[[CopyGenerator]]]
+>             copy_always = images/*
+> 
 >         [[[StationInfo]]]
 >             station_info_items = location, sunRiseSet, moonphase, uptime
 > 
@@ -341,7 +345,7 @@
 >                     symbol = circle
 >                     symbolSize = 3
 >                     decimals = 0
-> 
+337a527,629
 >         [[[HistoryReport]]]
 >             history_items = max_wind, NOAA
 > 
@@ -445,19 +449,19 @@
 >             [[[[year_images]]]]
 >                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
 > 
-439c728
+439c731
 <     archive_interval = 300
 ---
 >     archive_interval = 60
-473c762
+473c765
 <         schema = schemas.wview_extended.schema
 ---
 >         schema = user.wview_schema_mast.schema
-521c810
+521c813
 <         prep_services = weewx.engine.StdTimeSynch
 ---
 >         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
-527a817,836
+527a820,839
 > 
 > [Logging]
 > 
