@@ -169,6 +169,10 @@
 > 
 298a313
 >                 group_speed = knot
+317c332
+<                 # current    = %d-%b-%Y %H:%M
+---
+>                 current    = "%a %d %b %Y, %I:%M%p"
 333a349,357
 >                 currentSpeed = Current Speed
 >                 currentDir = Current Direction
@@ -179,7 +183,7 @@
 >                 waveMeanHeight = Wave Height
 >                 waveDir = Wave Direction
 >                 waveDominantPeriod = Wave Period
-336a361,525
+336a361,582
 > 
 >         [[[CopyGenerator]]]
 >             copy_always = images/*
@@ -345,7 +349,7 @@
 >                     symbol = circle
 >                     symbolSize = 3
 >                     decimals = 0
-337a527,629
+> 
 >         [[[HistoryReport]]]
 >             history_items = max_wind, NOAA
 > 
@@ -402,7 +406,7 @@
 >                 [[[[[dayRSSI-Bootstrap]]]]]
 >                     yscale = None, None, 3.0
 >                     [[[[[[rxRSSI]]]]]]
-> 
+337a584,629
 >             [[[[week_images]]]]
 >                 image_items = weekWind-Bootstrap, weekWindDir-Bootstrap, weekCurrentSpeed-Bootstrap, weekCurrentDir-Bootstrap, weekWaveHeight-Bootstrap, weekWavePeriod-Bootstrap, weekGpsLatitude-Bootstrap, weekGpsLongitude-Bootstrap, weekSNR-Bootstrap, weekRSSI-Bootstrap
 >                 line_type = 'none'
