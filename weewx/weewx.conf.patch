@@ -151,7 +151,7 @@
 > 
 213a215
 > 
-219c221,233
+219c221,281
 <     
 ---
 >         [[[News]]]
@@ -164,45 +164,12 @@
 > #                 img_src = "path/to/big_news.jpg"
 > #                 img_alt = "Big News!"
 > #                 img_title = "We have big news!"
-> 
-> 
-> 
-298a313
->                 group_speed = knot
-317c332
-<                 # current    = %d-%b-%Y %H:%M
----
->                 current    = "%a %d %b %Y, %I:%M%p"
-333a349,357
->                 currentSpeed = Current Speed
->                 currentDir = Current Direction
->                 gpsLatitude = Latitude
->                 gpsLongitude = Longitude
->                 rxSNR = rx SNR
->                 rxRSSI = rx RSSI
->                 waveMeanHeight = Wave Height
->                 waveDir = Wave Direction
->                 waveDominantPeriod = Wave Period
-336a361,582
-> 
->         [[[CopyGenerator]]]
->             copy_always = images/*
-> 
->         [[[StationInfo]]]
->             station_info_items = location, sunRiseSet, moonphase, uptime
-> 
->         [[[Navigation]]]
->             navigation_items = index, stats, history, news, about
-> 
->         [[[JSONGenerator]]]
->             timespan = 6
-> 
 >         [[[LiveGauges]]]
 >             live_gauge_items = windDir, windSpeed, currentDir, currentSpeed, waveMeanHeight, waveDominantPeriod
 >             [[[[windDir]]]] #windDir is a special, circular direction gauge, options are limited
 >                 payload_key = windDir
 >                 lineColorN = '#428bca'
->                 lineColorS = '#b44242'
+>                 lineColorS = '#428bca'
 >                 decimals = 0
 >                 stuckNeedleEnabled = false
 >             [[[[windSpeed]]]]
@@ -211,22 +178,22 @@
 >                 maxvalue = 50
 >                 splitnumber = 10
 >                 lineColor = '#428bca', '#b44242'
->                 lineColorUntil = 25, maxvalue
->                 decimals = 0
+>                 lineColorUntil = 22, maxvalue          # 22 marks strong breeze
+>                 decimals = 1
 >                 stuckNeedleEnabled = false
 >             [[[[currentDir]]]]
 >                 payload_key = currentDir
 >                 lineColorN = '#428bca'
->                 lineColorS = '#b44242'
+>                 lineColorS = '#428bca'
 >                 decimals = 0
 >                 stuckNeedleEnabled = false
 >             [[[[currentSpeed]]]]
 >                 payload_key = currentSpeed_knot           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
 >                 minvalue = 0
->                 maxvalue = 10
->                 splitnumber = 10
+>                 maxvalue = 3
+>                 splitnumber = 6
 >                 lineColor = '#428bca', '#b44242'
->                 lineColorUntil = 3, maxvalue
+>                 lineColorUntil = 1, maxvalue
 >                 decimals = 2
 >                 stuckNeedleEnabled = false
 >             [[[[waveMeanHeight]]]]
@@ -241,12 +208,41 @@
 >             [[[[waveDominantPeriod]]]]
 >                 payload_key = waveDominantPeriod_s           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
 >                 minvalue = 0
->                 maxvalue = 120
->                 splitnumber = 12
->                 lineColor = '#428bca'
->                 lineColorUntil = 120, maxvalue
->                 decimals = 0
+>                 maxvalue = 10
+>                 splitnumber = 10
+>                 lineColor = '#428bca', '#b44242'
+>                 lineColorUntil = 5, maxvalue
+>                 decimals = 1
 >                 stuckNeedleEnabled = false
+> 
+298a361
+>                 group_speed = knot
+317c380
+<                 # current    = %d-%b-%Y %H:%M
+---
+>                 current    = "%a %d %b %Y, %I:%M%p"
+333a397,405
+>                 currentSpeed = Current Speed
+>                 currentDir = Current Direction
+>                 gpsLatitude = Latitude
+>                 gpsLongitude = Longitude
+>                 rxSNR = rx SNR
+>                 rxRSSI = rx RSSI
+>                 waveMeanHeight = Wave Height
+>                 waveDir = Wave Direction
+>                 waveDominantPeriod = Wave Period
+337a410,626
+>         [[[CopyGenerator]]]
+>             copy_always = images/*
+> 
+>         [[[StationInfo]]]
+>             station_info_items = location, sunRiseSet, moonphase, uptime
+> 
+>         [[[Navigation]]]
+>             navigation_items = index, stats, history, news, about
+> 
+>         [[[JSONGenerator]]]
+>             timespan = 6
 > 
 >         [[[LiveCharts]]]
 >             live_chart_items = windSpeed, windDir, currentSpeed, currentDir, waveMeanHeight, waveDominantPeriod, gpsLatitude, gpsLongitude, rx
@@ -406,7 +402,7 @@
 >                 [[[[[dayRSSI-Bootstrap]]]]]
 >                     yscale = None, None, 3.0
 >                     [[[[[[rxRSSI]]]]]]
-337a584,629
+> 
 >             [[[[week_images]]]]
 >                 image_items = weekWind-Bootstrap, weekWindDir-Bootstrap, weekCurrentSpeed-Bootstrap, weekCurrentDir-Bootstrap, weekWaveHeight-Bootstrap, weekWavePeriod-Bootstrap, weekGpsLatitude-Bootstrap, weekGpsLongitude-Bootstrap, weekSNR-Bootstrap, weekRSSI-Bootstrap
 >                 line_type = 'none'
@@ -453,19 +449,19 @@
 >             [[[[year_images]]]]
 >                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
 > 
-439c731
+439c728
 <     archive_interval = 300
 ---
 >     archive_interval = 60
-473c765
+473c762
 <         schema = schemas.wview_extended.schema
 ---
 >         schema = user.wview_schema_mast.schema
-521c813
+521c810
 <         prep_services = weewx.engine.StdTimeSynch
 ---
 >         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
-527a820,839
+527a817,836
 > 
 > [Logging]
 > 
