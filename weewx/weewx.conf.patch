@@ -165,7 +165,7 @@
 > #                 img_alt = "Big News!"
 > #                 img_title = "We have big news!"
 >         [[[LiveGauges]]]
->             live_gauge_items = windDir, windSpeed, currentDir, currentSpeed, waveMeanHeight, waveDominantPeriod
+>             live_gauge_items = windDir, windSpeed, currentDir, currentSpeed, waveMaximumHeight, waveDominantPeriod
 >             [[[[windDir]]]] #windDir is a special, circular direction gauge, options are limited
 >                 payload_key = windDir
 >                 lineColorN = '#428bca'
@@ -196,8 +196,8 @@
 >                 lineColorUntil = 1, maxvalue
 >                 decimals = 2
 >                 stuckNeedleEnabled = false
->             [[[[waveMeanHeight]]]]
->                 payload_key = waveMeanHeight_ft           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
+>             [[[[waveMaximumHeight]]]]
+>                 payload_key = waveMaximumHeight_ft           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
 >                 minvalue = 0
 >                 maxvalue = 10
 >                 splitnumber = 10
@@ -228,7 +228,7 @@
 >                 gpsLongitude = Longitude
 >                 rxSNR = rx SNR
 >                 rxRSSI = rx RSSI
->                 waveMeanHeight = Wave Height
+>                 waveMaximumHeight = Wave Height
 >                 waveDir = Wave Direction
 >                 waveDominantPeriod = Wave Period
 337a410,626
@@ -245,7 +245,7 @@
 >             timespan = 6
 > 
 >         [[[LiveCharts]]]
->             live_chart_items = windSpeed, windDir, currentSpeed, currentDir, waveMeanHeight, waveDominantPeriod, gpsLatitude, gpsLongitude, rx
+>             live_chart_items = windSpeed, windDir, currentSpeed, currentDir, waveMaximumHeight, waveDominantPeriod, gpsLatitude, gpsLongitude, rx
 >             [[[[windSpeed]]]]
 >                 [[[[[windSpeed]]]]]
 >                     payload_key = windSpeed
@@ -282,9 +282,9 @@
 >                     symbol = circle
 >                     symbolSize = 3
 >                     decimals = 0
->             [[[[waveMeanHeight]]]]
->                 [[[[[waveMeanHeight]]]]]
->                     payload_key = waveMeanHeight
+>             [[[[waveMaximumHeight]]]]
+>                 [[[[[waveMaximumHeight]]]]]
+>                     payload_key = waveMaximumHeight
 >                     showMaxMarkPoint = true
 >                     showMinMarkPoint = true
 >                     showAvgMarkLine = false
@@ -350,14 +350,14 @@
 >             history_items = max_wind, NOAA
 > 
 >         [[[Stats]]]
->             stats_items = wind #, outTemp, outHumidity, currentSpeed, currentDir, waveMeanHeight, waveDir
+>             stats_items = wind #, outTemp, outHumidity, currentSpeed, currentDir, waveMaximumHeight, waveDir
 >             [[[[outHumidity]]]]
 >                 [[[[[avg]]]]]
 >             [[[[currentSpeed]]]]
 >                 [[[[[avg]]]]]
 >             [[[[currentDir]]]]
 >                 [[[[[avg]]]]]
->             [[[[waveMeanHeight]]]]
+>             [[[[waveMaximumHeight]]]]
 >                 [[[[[avg]]]]]
 >             [[[[waveDir]]]]
 >                 [[[[[avg]]]]]
@@ -386,7 +386,7 @@
 >                     [[[[[[currentDir]]]]]]
 >                 [[[[[dayWaveHeight-Bootstrap]]]]]
 >                     yscale = 0.0, None, 0.1
->                     [[[[[[waveMeanHeight]]]]]]
+>                     [[[[[[waveMaximumHeight]]]]]]
 >                 [[[[[dayWavePeriod-Bootstrap]]]]]
 >                     yscale = 0.0, 360.0, 45.0
 >                     [[[[[[waveDominantPeriod]]]]]]
@@ -425,7 +425,7 @@
 >                     [[[[[[currentDir]]]]]]
 >                 [[[[[weekWaveHeight-Bootstrap]]]]]
 >                     yscale = 0.0, None, 0.1
->                     [[[[[[waveMeanHeight]]]]]]
+>                     [[[[[[waveMaximumHeight]]]]]]
 >                 [[[[[weekWavePeriod-Bootstrap]]]]]
 >                     yscale = 0.0, 360.0, 45.0
 >                     [[[[[[waveDominantPeriod]]]]]]
