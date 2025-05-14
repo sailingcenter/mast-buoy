@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+message WindData {
+  optional uint32 windSpeedDirection_degrees = 1;
+  optional uint32 windSpeedAverage_kmh_scaled100 = 2;
+  optional uint32 windSpeedGust_kmh_scaled100 = 3;
+  optional uint32 windSpeedLull_kmh_scaled100 = 4;
+}
+
+message AirData {
+  optional sint32 airTemperature_celsius_scaled10 = 1;
+  optional uint32 airRelativeHumidity_percent_scaled10 = 2;
+  optional uint32 airPressure_hpa_scaled100 = 3;
+}
+
+message CurrentData {
+  optional uint32 surfaceCurrentDirection_degrees = 1;
+  optional uint32 surfaceCurrentSpeed_kmh_scaled100 = 2;
+  optional sint32 surfaceTemperature_celsius_scaled10 = 3;
+}
+
+message WaveData {
+  optional uint32 dominantWavePeriod_seconds_scaled100 = 1;
+  optional uint32 significantWaveHeight_meters_scaled100 = 2;
+  optional uint32 meanWaveHeightHighestTenth_meters_scaled100 = 3;
+  optional uint32 maximumWaveHeight_meters_scaled100 = 4;
+}
+
+message Telemetry {
+  optional sint32 gpsLatitude_degrees_scaled10000000 = 1;
+  optional sint32 gpsLongitude_degrees_scaled10000000 = 2;
+  optional uint32 gpsAltitude_meters_scaled100 = 3;
+}
+
+message BuoyData {
+  optional WindData windData = 1;
+  optional AirData airData = 2;
+  optional CurrentData currentData = 3;
+  optional WaveData waveData = 4;
+  optional Telemetry telemetry = 5;
+}
