@@ -149,79 +149,22 @@
 <     
 ---
 > 
-213a215
-> 
-219c221,281
+214,219c215
+<     [[Bootstrap]]
+<         skin = Bootstrap
+<         enable = true
+<         lang = en
+<         HTML_ROOT = public_html/Bootstrap
 <     
 ---
->         [[[News]]]
->             [[[[June 21, 2024]]]]
->                 header = "Antenna Upgrade"
->                 body = "The receiver antenna at the sailing center was replaced with a higher gain antenna to improve signal reception."
->             [[[[May 12, 2024]]]]
->                 header = "MAST Buoy Deployed!"
->                 body = "The Marquette University team successfully deployed the buoy in rough sea conditions."
-> #                 img_src = "path/to/big_news.jpg"
-> #                 img_alt = "Big News!"
-> #                 img_title = "We have big news!"
->         [[[LiveGauges]]]
->             live_gauge_items = windDir, windSpeed, currentDir, currentSpeed, waveMaximumHeight, waveDominantPeriod
->             [[[[windDir]]]] #windDir is a special, circular direction gauge, options are limited
->                 payload_key = windDir
->                 lineColorN = '#428bca'
->                 lineColorS = '#428bca'
->                 decimals = 0
->                 stuckNeedleEnabled = false
->             [[[[windSpeed]]]]
->                 payload_key = windSpeed_knot           # windSpeed_mps if target_unit 'METRICWX', windSpeed_kph if 'METRIC'
->                 minvalue = 0
->                 maxvalue = 50
->                 splitnumber = 10
->                 lineColor = '#428bca', '#b44242'
->                 lineColorUntil = 22, maxvalue          # 22 marks strong breeze
->                 decimals = 1
->                 stuckNeedleEnabled = false
->             [[[[currentDir]]]]
->                 payload_key = currentDir
->                 lineColorN = '#428bca'
->                 lineColorS = '#428bca'
->                 decimals = 0
->                 stuckNeedleEnabled = false
->             [[[[currentSpeed]]]]
->                 payload_key = currentSpeed_knot           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
->                 minvalue = 0
->                 maxvalue = 3
->                 splitnumber = 6
->                 lineColor = '#428bca', '#b44242'
->                 lineColorUntil = 1, maxvalue
->                 decimals = 2
->                 stuckNeedleEnabled = false
->             [[[[waveMaximumHeight]]]]
->                 payload_key = waveMaximumHeight_ft           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
->                 minvalue = 0
->                 maxvalue = 10
->                 splitnumber = 10
->                 lineColor = '#428bca', '#b44242'
->                 lineColorUntil = 3, maxvalue
->                 decimals = 1
->                 stuckNeedleEnabled = false
->             [[[[waveDominantPeriod]]]]
->                 payload_key = waveDominantPeriod_s           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
->                 minvalue = 0
->                 maxvalue = 10
->                 splitnumber = 10
->                 lineColor = '#428bca', '#b44242'
->                 lineColorUntil = 5, maxvalue
->                 decimals = 1
->                 stuckNeedleEnabled = false
 > 
-298a361
+298a295
 >                 group_speed = knot
-317c380
+317c314
 <                 # current    = %d-%b-%Y %H:%M
 ---
 >                 current    = "%a %d %b %Y, %I:%M%p"
-333a397,405
+333a331,339
 >                 currentSpeed = Current Speed
 >                 currentDir = Current Direction
 >                 gpsLatitude = Latitude
@@ -231,120 +174,13 @@
 >                 waveMaximumHeight = Wave Height
 >                 waveDir = Wave Direction
 >                 waveDominantPeriod = Wave Period
-337a410,626
+336a343,451
+> 
 >         [[[CopyGenerator]]]
 >             copy_always = images/*
 > 
->         [[[StationInfo]]]
->             station_info_items = location, sunRiseSet, moonphase, uptime
-> 
->         [[[Navigation]]]
->             navigation_items = index, stats, history, news, about
-> 
 >         [[[JSONGenerator]]]
 >             timespan = 6
-> 
->         [[[LiveCharts]]]
->             live_chart_items = windSpeed, windDir, currentSpeed, currentDir, waveMaximumHeight, waveDominantPeriod, gpsLatitude, gpsLongitude, rx
->             [[[[windSpeed]]]]
->                 [[[[[windSpeed]]]]]
->                     payload_key = windSpeed
->                     showMaxMarkPoint = true
->                     showMinMarkPoint = true
->                     showAvgMarkLine = false
->                     lineColor = '#428bca'
->                     lineWidth = 0
->                     symbol = circle
->                     symbolSize = 3
->                     decimals = 1
->             [[[[windDir]]]]
->                 [[[[[windDir]]]]]
->                     symbolSize = 3
->             [[[[currentSpeed]]]]
->                 [[[[[currentSpeed]]]]]
->                     payload_key = currentSpeed
->                     showMaxMarkPoint = true
->                     showMinMarkPoint = true
->                     showAvgMarkLine = false
->                     lineColor = '#428bca'
->                     lineWidth = 0
->                     symbol = circle
->                     symbolSize = 3
->                     decimals = 2
->             [[[[currentDir]]]]
->                 [[[[[currentDir]]]]]
->                     payload_key = currentDir
->                     showMaxMarkPoint = false
->                     showMinMarkPoint = false
->                     showAvgMarkLine = false
->                     lineColor = '#428bca'
->                     lineWidth = 0
->                     symbol = circle
->                     symbolSize = 3
->                     decimals = 0
->             [[[[waveMaximumHeight]]]]
->                 [[[[[waveMaximumHeight]]]]]
->                     payload_key = waveMaximumHeight
->                     showMaxMarkPoint = true
->                     showMinMarkPoint = true
->                     showAvgMarkLine = false
->                     lineColor = '#428bca'
->                     lineWidth = 0
->                     symbol = circle
->                     symbolSize = 3
->                     decimals = 1
->             [[[[waveDominantPeriod]]]]
->                 [[[[[waveDominantPeriod]]]]]
->                     payload_key = waveDominantPeriod
->                     showMaxMarkPoint = true
->                     showMinMarkPoint = true
->                     showAvgMarkLine = false
->                     lineColor = '#428bca'
->                     lineWidth = 0
->                     symbol = circle
->                     symbolSize = 3
->                     decimals = 0
->             [[[[gpsLatitude]]]]
->                 [[[[[gpsLatitude]]]]]
->                     payload_key = gpsLatitude
->                     showMaxMarkPoint = true
->                     showMinMarkPoint = true
->                     showAvgMarkLine = false
->                     lineColor = '#428bca'
->                     lineWidth = 0
->                     symbol = circle
->                     symbolSize = 3
->                     decimals = 4
->             [[[[gpsLongitude]]]]
->                 [[[[[gpsLongitude]]]]]
->                     payload_key = gpsLongitude
->                     showMaxMarkPoint = true
->                     showMinMarkPoint = true
->                     showAvgMarkLine = false
->                     lineColor = '#428bca'
->                     lineWidth = 0
->                     symbol = circle
->                     symbolSize = 3
->                     decimals = 4
->             [[[[rx]]]]
->                 [[[[[rxSNR]]]]]
->                     showMaxMarkPoint = true
->                     showMinMarkPoint = true
->                     showAvgMarkLine = false
->                     lineColor = '#428bca'
->                     lineWidth = 0
->                     symbol = circle
->                     symbolSize = 3
->                     decimals = 0
->                 [[[[[rxRSSI]]]]]
->                     showMaxMarkPoint = true
->                     showMinMarkPoint = true
->                     showAvgMarkLine = false
->                     lineColor = '#b44242'
->                     lineWidth = 0
->                     symbol = circle
->                     symbolSize = 3
->                     decimals = 0
 > 
 >         [[[HistoryReport]]]
 >             history_items = max_wind, NOAA
@@ -448,20 +284,198 @@
 >                 image_items = monthwind-Bootstrap, monthwinddir-Bootstrap
 >             [[[[year_images]]]]
 >                 image_items = yearwind-Bootstrap, yearwinddir-Bootstrap
+337a453,630
+>     [[Bootstrap]]
+>         skin = Bootstrap
+>         enable = true
+>         lang = en
+>         HTML_ROOT = public_html/Bootstrap
+>         [[[News]]]
+>             [[[[May 5, 2025]]]]
+>                 header = "Buoy Deployed"
+>                 body = "The Marquette University team successfully deployed the buoy in calm conditions with the help of University of Wisconsin Milwaukee's Neeskay and Captain Max."
+>                 img_src = "images/2025_Deployment_Prep_Electronics.jpg"
+>                 img_alt = "Students working on the buoy electronics"
+>                 img_title = "Electronics Prep"
+>             [[[[June 21, 2024]]]]
+>                 header = "Antenna Upgrade"
+>                 body = "The receiver antenna at the sailing center was replaced with a higher gain antenna to improve signal reception."
+>             [[[[May 12, 2024]]]]
+>                 header = "MAST Buoy Deployed!"
+>                 body = "The Marquette University team successfully deployed the buoy in rough sea conditions."
 > 
-439c728
+>         [[[StationInfo]]]
+>             station_info_items = location, sunRiseSet, moonphase, uptime
+> 
+>         [[[Navigation]]]
+>             navigation_items = index, stats, history, news, about
+> 
+>         [[[LiveGauges]]]
+>             live_gauge_items = windDir, windSpeed, currentDir, currentSpeed, waveMaximumHeight, waveDominantPeriod
+>             [[[[windDir]]]] #windDir is a special, circular direction gauge, options are limited
+>                 payload_key = windDir
+>                 lineColorN = '#428bca'
+>                 lineColorS = '#428bca'
+>                 decimals = 0
+>                 stuckNeedleEnabled = false
+>             [[[[windSpeed]]]]
+>                 payload_key = windSpeed_knot           # windSpeed_mps if target_unit 'METRICWX', windSpeed_kph if 'METRIC'
+>                 minvalue = 0
+>                 maxvalue = 50
+>                 splitnumber = 10
+>                 lineColor = '#428bca', '#b44242'
+>                 lineColorUntil = 22, maxvalue          # 22 marks strong breeze
+>                 decimals = 1
+>                 stuckNeedleEnabled = false
+>             [[[[currentDir]]]]
+>                 payload_key = currentDir
+>                 lineColorN = '#428bca'
+>                 lineColorS = '#428bca'
+>                 decimals = 0
+>                 stuckNeedleEnabled = false
+>             [[[[currentSpeed]]]]
+>                 payload_key = currentSpeed_knot           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
+>                 minvalue = 0
+>                 maxvalue = 3
+>                 splitnumber = 6
+>                 lineColor = '#428bca', '#b44242'
+>                 lineColorUntil = 1, maxvalue
+>                 decimals = 2
+>                 stuckNeedleEnabled = false
+>             [[[[waveMaximumHeight]]]]
+>                 payload_key = waveMaximumHeight_ft           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
+>                 minvalue = 0
+>                 maxvalue = 10
+>                 splitnumber = 10
+>                 lineColor = '#428bca', '#b44242'
+>                 lineColorUntil = 3, maxvalue
+>                 decimals = 1
+>                 stuckNeedleEnabled = false
+>             [[[[waveDominantPeriod]]]]
+>                 payload_key = waveDominantPeriod_s           # currentSpeed_mps if target_unit 'METRICWX', currentSpeed_kph if 'METRIC'
+>                 minvalue = 0
+>                 maxvalue = 10
+>                 splitnumber = 10
+>                 lineColor = '#428bca', '#b44242'
+>                 lineColorUntil = 5, maxvalue
+>                 decimals = 1
+>                 stuckNeedleEnabled = false
+> 
+>         [[[LiveCharts]]]
+>             live_chart_items = windSpeed, windDir, currentSpeed, currentDir, waveMaximumHeight, waveDominantPeriod, gpsLatitude, gpsLongitude, rx
+>             [[[[windSpeed]]]]
+>                 [[[[[windSpeed]]]]]
+>                     payload_key = windSpeed
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     lineWidth = 0
+>                     symbol = circle
+>                     symbolSize = 3
+>                     decimals = 1
+>             [[[[windDir]]]]
+>                 [[[[[windDir]]]]]
+>                     symbolSize = 3
+>             [[[[currentSpeed]]]]
+>                 [[[[[currentSpeed]]]]]
+>                     payload_key = currentSpeed
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     lineWidth = 0
+>                     symbol = circle
+>                     symbolSize = 3
+>                     decimals = 2
+>             [[[[currentDir]]]]
+>                 [[[[[currentDir]]]]]
+>                     payload_key = currentDir
+>                     showMaxMarkPoint = false
+>                     showMinMarkPoint = false
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     lineWidth = 0
+>                     symbol = circle
+>                     symbolSize = 3
+>                     decimals = 0
+>             [[[[waveMaximumHeight]]]]
+>                 [[[[[waveMaximumHeight]]]]]
+>                     payload_key = waveMaximumHeight
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     lineWidth = 0
+>                     symbol = circle
+>                     symbolSize = 3
+>                     decimals = 1
+>             [[[[waveDominantPeriod]]]]
+>                 [[[[[waveDominantPeriod]]]]]
+>                     payload_key = waveDominantPeriod
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     lineWidth = 0
+>                     symbol = circle
+>                     symbolSize = 3
+>                     decimals = 0
+>             [[[[gpsLatitude]]]]
+>                 [[[[[gpsLatitude]]]]]
+>                     payload_key = gpsLatitude
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     lineWidth = 0
+>                     symbol = circle
+>                     symbolSize = 3
+>                     decimals = 4
+>             [[[[gpsLongitude]]]]
+>                 [[[[[gpsLongitude]]]]]
+>                     payload_key = gpsLongitude
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     lineWidth = 0
+>                     symbol = circle
+>                     symbolSize = 3
+>                     decimals = 4
+>             [[[[rx]]]]
+>                 [[[[[rxSNR]]]]]
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#428bca'
+>                     lineWidth = 0
+>                     symbol = circle
+>                     symbolSize = 3
+>                     decimals = 0
+>                 [[[[[rxRSSI]]]]]
+>                     showMaxMarkPoint = true
+>                     showMinMarkPoint = true
+>                     showAvgMarkLine = false
+>                     lineColor = '#b44242'
+>                     lineWidth = 0
+>                     symbol = circle
+>                     symbolSize = 3
+>                     decimals = 0
+> 
+439c732
 <     archive_interval = 300
 ---
 >     archive_interval = 60
-473c762
+473c766
 <         schema = schemas.wview_extended.schema
 ---
 >         schema = user.wview_schema_mast.schema
-521c810
+521c814
 <         prep_services = weewx.engine.StdTimeSynch
 ---
 >         prep_services = weewx.engine.StdTimeSynch, user.mast_obs.MASTObservations
-527a817,836
+527a821,839
 > 
 > [Logging]
 > 
@@ -481,4 +495,3 @@
 >             filename = logs/{process_name}.log
 >             when = midnight
 >             backupCount = 7
-> 
