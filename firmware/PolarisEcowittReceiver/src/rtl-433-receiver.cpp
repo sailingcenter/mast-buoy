@@ -4,7 +4,7 @@
 #include <rtl_433_ESP.h>
 
 #ifndef RF_MODULE_FREQUENCY
-#  define RF_MODULE_FREQUENCY 433.92
+#  define RF_MODULE_FREQUENCY 915.00
 #endif
 
 #if defined(setBitrate) || defined(setFreqDev) || defined(setRxBW)
@@ -86,13 +86,13 @@ void rtl_433_receiver_loop()
     if (uptime() > next) {
         next = uptime() + 120; // 60 seconds
         dtostrf(step, 7, 2, stepPrint);
-        Log.notice(F(CR "Finished %s: %s, count: %d" CR), TEST, stepPrint, count);
+        ESP_LOGI("rtl-433", "Finished %s: %s, count: %d", TEST, stepPrint, count);
         step += STEP;
         if (step > stepMax) {
             step = stepMin;
         }
         dtostrf(step, 7, 2, stepPrint);
-        Log.notice(F("Starting %s with %s" CR), TEST, stepPrint);
+        ESP_LOGI("rtl-433", "Starting %s: %s", TEST, stepPrint);
         count = 0;
 
         int16_t state = 0;
@@ -105,13 +105,12 @@ void rtl_433_receiver_loop()
 #  elif defined(setRxBW)
         state = rf.setRxBandwidth(step);
         if ((state) != RADIOLIB_ERR_NONE) {
-            Log.notice(F(CR "Setting  %s: to %s, failed" CR), TEST, stepPrint);
+            ESP_LOGI("rtl-433", "Setting %s: to %s, failed", TEST, stepPrint);
             next = uptime() - 1;
         }
 #  endif
 
         rf.receiveDirect();
-        // rf.getModuleStatus();
     }
 #endif
 }
